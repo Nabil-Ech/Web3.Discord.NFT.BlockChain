@@ -38,9 +38,17 @@ describe("Dappcord", function () {
   })
 
   describe("creating channels", () => {
+
     it ("Returns total channels", async() => {
       let result = await dappcord.totalchannels()
       expect(result).to.equal(1)
+    })
+
+    it ("Returns channel attributes", async() => {
+      const channel = await dappcord.getChannel(1)
+      expect(channel.id).to.equal(1)
+      expect(channel.name).to.equal("Mercedes")
+      expect(channel.cost).to.equal(tokens(1))
     })
   })
 })
